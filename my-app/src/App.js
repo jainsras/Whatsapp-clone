@@ -3,16 +3,23 @@ import './App.css';
 import Sidebar from './Sidebar';
 import Chat from './Chat';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import Login from './Login';
+import { useStateValue } from './StateProvider';
 function App() {
 
   // const [user, setuser] = useState(null);
+  const[{user}, dispatch] = useStateValue();
 
   return (
     //BEM naming convention
     <div className="app">
-      {/* <h1>Let's build a whatsapp clone</h1> */}
-      <div className="app__body">
-
+      
+      {!user ?(
+        <Login />
+      ):(
+        <div className="app__body">
+        
         <Router>
         <Sidebar/>
         <Switch>
@@ -26,6 +33,8 @@ function App() {
         </Switch>
         </Router>
       </div>
+    
+      )}
     </div>
   );
 }
