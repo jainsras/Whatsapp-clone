@@ -50,7 +50,7 @@ function Chat() {
                 <h3>{roomName}</h3>
                 <p>last seen {" "}
                     {new Date(messages[messages.length-1]?.timestamp?.toDate())
-                    .toUTCString()
+                    .toLocaleString()
                     }
                 </p>
             </div>
@@ -72,7 +72,7 @@ function Chat() {
                 <span className='chat__name'>{message.name}</span>
                 {message.message}
                 <span className='chat__timestamp'>
-                {new Date(message.timestamp?.toDate()).toUTCString()}
+                {new Date(message.timestamp?.toDate()).toLocaleString()}
                 </span></p>
                 
                 ))}
